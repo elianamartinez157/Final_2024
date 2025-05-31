@@ -134,7 +134,45 @@ The 95% confidence interval ranges from 1.5 to 2.3, entirely above 1, reinforcin
 
 ## LGBTQ
 
+##Methods  Add commentMore actions
+$H_0$ The preventative vaccine does not exhibit its effective in people who are LGBTQ.        
+$H_A$ The preventative vaccine exhibits its effective in people who are LGBTQ. 
 
+Cat~Cat
+
+```{r}
+gay = FinalData[FinalData$LGBTQ=='gay',]
+head(gay)
+```
+
+##Graphical Results  Add commentMore actions
+
+```{r}
+barchartGC(~infected + treatment,data=gay)
+barchartGC(~infected + treatment,data=gay, type="percent")
+```
+
+The bar graph indicates that the vaccine is effective in preventing COVID-19 among individuals who identify as LGBTQ.
+
+##Numerical Results Add commentMore actions
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=gay)
+rowPerc(table1)
+colPerc(table1)
+```
+
+The data indicates that only 20% of vaccinated LGBTQ individuals contracted COVID-19, in contrast to 80% of those who received a placebo. This implies that the vaccine effectively reduces COVID-19 infections among members of the LGBTQ community.
+
+##Infrential ResultsAdd commentMore actions
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+
+The test produced a p-value of 0.000002266, which is well below the 0.05 threshold, leading to the rejection of the null hypothesis. According to Fisher’s exact test, the odds ratio is 4.27, meaning that vaccinated individuals were over four times more likely to avoid contracting COVID-19 than those who received the placebo.
 
 ## Druggies
 
