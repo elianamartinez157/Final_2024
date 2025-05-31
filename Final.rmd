@@ -26,6 +26,62 @@ A new  preventative vaccine (covid921) is under test in clinical trials. Given t
 
 ## Males
 
+Is the Covid vaccine effetive in males?Add commentMore actions
+
+$H_0$: The new preventative vaccine (Covid921) does not exhibit any effectivness on males.  
+$H_A$: The new preventative vaccine (Covid921) does exhibit effectivness on male.
+
+cat-cat
+
+```{r}
+Males = FinalData[FinalData$sex=='M',]
+head(Males)
+```
+
+## Graphical ResultsAdd commentMore actions
+
+```{r}
+barchartGC(~infected + treatment,data=Males)
+barchartGC(~infected + treatment,data=Males, type="percent")
+```
+
+This graph demonstrates that the vaccine is effective in preventing COVID-19 in males, as fewer men who received the vaccine contracted the virus compared to those who received the placebo.
+
+## Numerical ResultsAdd commentMore actions
+
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=Males)
+rowPerc(table1)
+colPerc(table1)
+```
+
+The table shows that 26.20% of men who received the vaccine contracted COVID-19, while 73.80% of men who received the placebo became infected.
+
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+
+The analysis examined the relationship between COVID-19 infection status and treatment type (vaccine vs. placebo) among males in the dataset. Results showed a significantly higher infection rate in the placebo group (2.82%) compared to the vaccine group (1.02%). A chi-square test confirmed a strong association between treatment and infection status (χ² = 77.87, *p* < 0.0001), and a Fisher's exact test supported this finding with an odds ratio of approximately 2.82, indicating that males in the placebo group were nearly three times more likely to be infected than those who received the vaccine. These results suggest that the vaccine was effective in reducing COVID-19 infections among males in the study.
+
+```{r}
+guysfish <- fisher.test(table1)
+guysfish
+```
+
+```{r}
+low <- (guysfish$conf.int[1] / (guysfish$conf.int[1] + 1)) * 100
+hi <- (guysfish$conf.int[2] / (guysfish$conf.int[2] + 1)) * 100
+options(digits=2)
+```
+
+The p-value from Fisher’s test is effectively zero, which is far below the 0.05 threshold. Therefore, we reject the null hypothesis, indicating that the vaccine is effective in males. The odds ratio is 2.81, meaning that men who received the vaccine were nearly three times less likely to contract COVID-19 compared to those who received the placebo.Add commentMore actions
+
+Furthermore, the 95% confidence interval ranges from 2.21 to 3.61. Since the entire interval is above 1, this provides additional evidence supporting the vaccine’s effectiveness. Overall, the data strongly suggest that the vaccine is a beneficial option for males.Add commentMore actions
+
 
 ## Females
 
