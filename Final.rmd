@@ -176,5 +176,60 @@ The test produced a p-value of 0.000002266, which is well below the 0.05 thresho
 
 ## Druggies
 
+##Methods  Add commentMore actions
+
+$H_0$ The preventative vaccine does not exhibit its effective in people who are drug users.    
+$H_A$ The preventative vaccine exhibits its effective in people who are drug users.  
+
+Cat~Cat
+
+```{r}
+DrugUser = FinalData[FinalData$DrugUser=='yes',]
+```
+
+##Graphical ResultsAdd commentMore actions
+
+```{r}
+barchartGC(~infected + treatment,data=DrugUser)
+barchartGC(~infected + treatment,data=DrugUser, type="percent")
+```
+
+The bar graph shows that the vaccine appears to be less effective in individuals who use drugs.
+
+##Numerical Results Add commentMore actions
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=DrugUser)
+rowPerc(table1)
+colPerc(table1)
+```
+
+The table shows that 91.67% of drug users who contracted COVID-19 had also received the vaccine. This suggests that the vaccine may be less effective among individuals who use drugs.
+
+##Inferential Results    Add commentMore actions
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+
+The p-value from the chi-squared test is 0.0000000001414, which is less than 0.05, so we reject the null hypothesis. However, despite the statistical significance, the results suggest that the vaccine may have limited effectiveness in this particular group.
+
+```{r}
+guysfish <- fisher.test(table1)
+guysfish
+```
+
+```{r}
+low <- (guysfish$conf.int[1] / (guysfish$conf.int[1] + 1)) * 100
+hi <- (guysfish$conf.int[2] / (guysfish$conf.int[2] + 1)) * 100
+options(digits=2)
+```
+
+## Effectiveness Confidence Interval `r low`  to `r hi`Add commentMore actions
+
+The p-value is 1e-08, which is extremely low and well below the 0.05 threshold, so we reject the null hypothesis. This indicates that the odds of contracting COVID-19 differ significantly depending on whether or not a person received the vaccine.
+
 
 # Overall Results and Conclusions
