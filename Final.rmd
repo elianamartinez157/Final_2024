@@ -233,3 +233,15 @@ The p-value is 1e-08, which is extremely low and well below the 0.05 threshold, 
 
 
 # Overall Results and Conclusions
+
+Men:
+The data suggests the vaccine is effective for men. Only 26.2% of vaccinated men contracted COVID-19, compared to 73.8% of those who received the placebo—a notable difference. The p-value was 2.2e-16, far below the 0.05 threshold, allowing us to confidently reject the null hypothesis. The odds ratio was approximately 2.8, indicating that vaccinated men were about 2.8 times more likely to avoid infection than those who received the placebo. These results suggest the vaccine is a reliable preventive measure for men.
+
+Women:
+Similarly, the vaccine appears effective for women. Among those who contracted COVID-19, 35.07% had been vaccinated, while 64.93% had received the placebo. The p-value was 1.914e-8, well under the 0.05 threshold, supporting rejection of the null hypothesis. The odds ratio was about 1.86, showing that vaccinated women were significantly less likely to contract COVID-19. These findings indicate that the vaccine helps reduce infection risk among females.
+
+LGBTQ Individuals:
+For LGBTQ individuals, the vaccine also shows strong effectiveness. Just 20% of COVID-19 cases in this group occurred among vaccinated individuals, compared to 80% among those who received a placebo. This substantial gap is supported by a p-value of 2.266e-6, well below the 0.05 cutoff, leading to rejection of the null hypothesis. The odds ratio of 4.27 suggests that vaccinated LGBTQ individuals were over four times more likely to avoid infection. These results provide strong evidence of the vaccine’s benefit for this group.
+
+Drug Users:
+In contrast, the vaccine appears less effective among individuals who use drugs. Surprisingly, 91.67% of those in this group who contracted COVID-19 had received the vaccine, while only 8.33% had received the placebo—opposite of the expected pattern. The p-value was 1.414e-10, well below 0.05, indicating statistical significance. However, the odds ratio was just 0.087, suggesting a reduced likelihood of protection in this group. This result raises concerns about the vaccine’s effectiveness among drug users and may warrant further investigation.
