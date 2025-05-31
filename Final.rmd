@@ -84,6 +84,52 @@ Furthermore, the 95% confidence interval ranges from 2.21 to 3.61. Since the ent
 
 
 ## Females
+##Methods  Add commentMore actions
+$H_0$: The preventative vaccine does not exhibit its effective in females        
+$H_A$: The preventative vaccine exhibits its effective in females.  
+Cat~Cat.
+
+```{r}
+Females = FinalData[FinalData$sex=='F',]
+head(Females)
+```
+
+## Graphical ResultsAdd commentMore actions
+
+```{r}
+barchartGC(~infected + treatment,data=Females)
+barchartGC(~infected + treatment,data=Females, type="percent")
+```
+
+The bar graph shows that the vaccine is more effective in women, as fewer women who received the vaccine contracted COVID-19 compared to those who received the placebo.
+
+##Inferential Results Add commentMore actions
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+
+
+The p-value from the test is 0.00000001914, which is less than 0.05, so we reject the null hypothesis. The odds ratio from Fisher’s exact test is 1.856, indicating that the vaccine is approximately 1.86 times more effective in women who received it compared to those who received the placebo.
+
+```{r}
+guysfish <- fisher.test(table1)
+guysfish
+```
+
+```{r}
+low <- (guysfish$conf.int[1] / (guysfish$conf.int[1] + 1)) * 100
+hi <- (guysfish$conf.int[2] / (guysfish$conf.int[2] + 1)) * 100
+options(digits=2)
+```
+
+
+## Effectiveness Confidence Interval `r low`  to `r hi`
+Fisher’s test yielded a p-value of 1e-08, which is significantly lower than the 0.05 significance level, leading us to reject the null hypothesis. This indicates that the vaccine is also effective in females. The odds ratio of 1.9 suggests that vaccinated women were nearly twice as likely to avoid contracting COVID-19 compared to those who received a placebo.
+
+The 95% confidence interval ranges from 1.5 to 2.3, entirely above 1, reinforcing the conclusion that the vaccine has a statistically significant impact. These findings support the vaccine as a beneficial option for women.
 
 
 ## LGBTQ
